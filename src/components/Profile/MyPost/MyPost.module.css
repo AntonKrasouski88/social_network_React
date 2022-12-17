@@ -1,0 +1,20 @@
+.blockTextarea {
+    padding: 10px 20px;
+}
+.textarea {
+    display: block;
+    resize: none;
+    border-style: solid;
+    box-sizing: border-box;
+    appearance: none;
+    width: 100%;
+    min-height: 70px;
+    font-size: 17px;
+    line-height: 17px;
+    padding: 10px;
+}
+.addButtonPost {
+    margin-right: 20px;
+    display: flex;
+    justify-content: end;
+}

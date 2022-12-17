@@ -1,0 +1,20 @@
+.nav {
+    grid-row: 2;
+    background-color: #8e9aaf;
+
+}
+.item {
+    margin-top: 20px;
+    margin-left: 40px;
+
+}
+.item a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.item a:hover {
+    color: #5e60ce;
+    font-size: 19px;
+    transition: 0.2s;
+}
