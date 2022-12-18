@@ -12,13 +12,5 @@
 }
 
 .litters {
-
-}
-
-.litters .message {
-    margin-top: 10px;
-}
-
-.active {
-    color: #EC525A;
+    margin-left: 10px;
 }
