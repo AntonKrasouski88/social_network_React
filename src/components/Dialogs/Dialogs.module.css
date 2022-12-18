@@ -1,0 +1,24 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.dialogsPerson {
+    margin-left: 40px;
+}
+
+.dialogsPerson .dialogsItem {
+    margin-top: 10px;
+}
+
+.litters {
+
+}
+
+.litters .message {
+    margin-top: 10px;
+}
+
+.active {
+    color: #EC525A;
+}
