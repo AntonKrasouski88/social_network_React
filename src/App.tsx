@@ -17,7 +17,7 @@ function App() {
                 <Navbar/>
                 <div className={'container-content'}>
                     <Route path={'/Profile'} component={Profile}/>
-                    <Route path={'/Messages'} component={Dialogs}/>
+                    <Route path={'/Dialogs'} component={Dialogs}/>
                     <Route path={'/News'} component={News}/>
                     <Route path={'/Music'} component={Music}/>
                     <Route path={'/Setting'} component={Setting}/>
