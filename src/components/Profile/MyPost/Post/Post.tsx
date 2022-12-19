@@ -3,7 +3,8 @@ import person from '../../../../img/logo/person.png';
 import stylePost from './Post.module.css'
 
 type PostTypeProps = {
-    messages: string
+    messages: string;
+    countLikes: number;
 }
 
 const Post = (props: PostTypeProps) => {
@@ -13,7 +14,7 @@ const Post = (props: PostTypeProps) => {
                 <div><img src={person} alt={'person_logo'}/></div>
                 <div className={stylePost.textPost}>{props.messages}</div>
             </div>
-            <span>like</span>
+            <span>{`like ${props.countLikes}`}</span>
         </div>
     );
 };
