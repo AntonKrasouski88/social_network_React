@@ -2,15 +2,17 @@ import React from 'react';
 import styleMyPost from './MyPost.module.css'
 import Post from "./Post/Post";
 
+export interface PostsType {
+    id: number,
+    message: string,
+    countLikes: number,
+}
+export interface MyPostProps {
+    posts: Array<PostsType>,
+}
 
-const MyPost = () => {
-
-    const posts = [
-        {id: 1, message: 'Hello my friend!', countLikes: 5},
-        {id: 2, message: 'How are you?', countLikes: 7},
-        {id: 3, message: 'Do you look a new movie?', countLikes: 15},
-        {id: 4, message: 'Yes, I do', countLikes: 21},
-    ]
+const MyPost:React.FC<MyPostProps> = 
+    ({posts}) => {
 
     return (
         <div className={styleMyPost.container}>

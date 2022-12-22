@@ -1,6 +1,6 @@
 .nav {
     grid-row: 2;
-    background-color: #8e9aaf;
+    background-color: #ffffff;
 
 }
 .item {
@@ -9,8 +9,9 @@
 
 }
 .item a {
-    color: #ffffff;
+    color: #97abc0;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .item a:hover {
