@@ -4,12 +4,20 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
+import Dialogs, { MessageType } from "./components/Dialogs/Dialogs";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
+import {DialogType} from "./components/Dialogs/Dialogs"
 
-function App() {
+export type AppPropsType = {
+    dialogs: Array<DialogType>
+    messages: Array<MessageType>
+}
+
+
+
+function App(props:AppPropsType) {
     return (
         <BrowserRouter>
             <div className={'container'}>
@@ -17,7 +25,7 @@ function App() {
                 <Navbar/>
                 <div className={'container-content'}>
                     <Route path={'/Profile'} component={Profile}/>
-                    <Route path={'/Dialogs'} component={Dialogs}/>
+                    <Route path={'/Dialogs'} render={()=><Dialogs dialogs={props.dialogs} messages={props.messages}/>}/>
                     <Route path={'/News'} component={News}/>
                     <Route path={'/Music'} component={Music}/>
                     <Route path={'/Setting'} component={Setting}/>

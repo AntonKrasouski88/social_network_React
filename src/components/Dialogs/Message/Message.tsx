@@ -1,11 +1,11 @@
 import React from 'react';
 import styleMessage from "./Message.module.css";
 
-type MessageTypeProps = {
+type MessagePropsType = {
     message: string
 }
 
-const Message = (props: MessageTypeProps) => {
+const Message = (props: MessagePropsType) => {
     return (
         <div className={styleMessage.message}>
             {props.message}
