@@ -1,12 +1,9 @@
 import React from 'react';
+import { PostsType } from '../Profile';
 import styleMyPost from './MyPost.module.css'
 import Post from "./Post/Post";
 
-export interface PostsType {
-    id: number,
-    message: string,
-    countLikes: number,
-}
+
 export interface MyPostProps {
     posts: Array<PostsType>,
 }
