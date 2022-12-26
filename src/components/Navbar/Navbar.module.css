@@ -23,3 +23,20 @@
 .item a.active {
     color: #E5C59E;
 }
+
+.spanFrinds {
+    display: flex;
+    margin-top: 30px;
+    margin-left: 40px;
+    color: #1761b1;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+.sidebarFriends {
+    display: flex;
+    justify-content: space-around;
+}
+

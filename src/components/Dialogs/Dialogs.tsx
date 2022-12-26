@@ -26,10 +26,10 @@ const Dialogs = (props: DialogsPropsType) => {
     return (
         <div className={styleDialogs.container}>
             <div className={styleDialogs.dialogsPerson}>
-                {props.dialogs.map((d) => <DialogsItem id= {d.id} name={d.name}/>)}
+                {props.dialogs.map(d => <DialogsItem id= {d.id} name={d.name}/>)}
             </div>
             <div className={styleDialogs.litters}>
-                {props.messages.map(m => <Message message={m.message}/>)}
+                {props.messages.map(m => <Message id={m.id} message={m.message}/>)}
             </div>
         </div>
     );

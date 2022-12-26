@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css'
 import {BrowserRouter, Route} from "react-router-dom";
 import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar, { SidebarFriends } from "./components/Navbar/Navbar";
 import Profile, { PostsType } from "./components/Profile/Profile";
 import Dialogs, { MessageType } from "./components/Dialogs/Dialogs";
 import Music from "./components/Music/Music";
@@ -14,6 +14,7 @@ export type AppPropsType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
     posts: Array<PostsType>
+    sidebarFriends: Array<SidebarFriends>
 }
 
 
@@ -23,7 +24,7 @@ function App(props:AppPropsType) {
         <BrowserRouter>
             <div className={'container'}>
                 <Header/>
-                <Navbar/>
+                <Navbar sidebarFriends={props.sidebarFriends}/>
                 <div className={'container-content'}>
                     <Route path={'/Profile'} render={() => <Profile posts={props.posts}/>}/>
                     <Route path={'/Dialogs'} render={() => <Dialogs dialogs={props.dialogs} messages={props.messages}/>}/>

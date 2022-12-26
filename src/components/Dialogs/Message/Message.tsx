@@ -2,12 +2,13 @@ import React from 'react';
 import styleMessage from "./Message.module.css";
 
 type MessagePropsType = {
-    message: string
+    id: number,
+    message: string,
 }
 
 const Message = (props: MessagePropsType) => {
     return (
-        <div className={styleMessage.message}>
+        <div className={props.id%2 !== 0 ? styleMessage.message: styleMessage.messagesFriend}>
             {props.message}
         </div>
     );
