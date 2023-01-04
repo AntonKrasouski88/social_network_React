@@ -68,11 +68,11 @@ export const state: RootStateType = {
   }
 
 export const addPost = (post: string) => {
-  let newPost = {id: 5, message: post, countLikes: 0};
+  let newPost:PostsType = {id: new Date().getTime(), message: post, countLikes: 0};
   state.profilePage.posts.push(newPost);
 }
 
 export const addMessage = (message: string) => {
-  let newMessage = {id: 6, message: message};
+  let newMessage:MessagesType = {id: new Date().getTime(), message: message};
   state.dialogsPage.messages.push(newMessage);
 }

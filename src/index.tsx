@@ -10,6 +10,6 @@ import { addPost } from './redux/state';
 ReactDOM.render(
     <App state = {state}
          addPost = {addPost}
-         addMessage = {addMessage}/>,
+         addMessage ={addMessage}/>,
   document.getElementById('root')
 );
