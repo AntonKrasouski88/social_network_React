@@ -14,3 +14,34 @@
 .litters {
     margin-left: 10px;
 }
+
+.textArea {
+    margin-top: 30px;
+    box-sizing: border-box;
+    appearance: none;
+    resize: none;
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    
+}
+
+.textArea:hover {
+    outline: 1px solid rgb(60, 45, 190);
+}
+.textArea:focus {
+    outline: 1px solid rgb(60, 45, 190);
+}
+.buttonTextArea {
+    margin-top: 10px;
+    width: 100px;
+    height: 20px;
+    background-color: beige;
+}
+
+.buttonTextArea:hover {
+    background-color: rgb(212, 212, 135);
+}
+.buttonTextArea:active {
+    background-color: rgb(191, 212, 135);
+}
