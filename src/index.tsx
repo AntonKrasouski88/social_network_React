@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { state } from './redux/state';
+import { addMessage, state } from './redux/state';
+import { addPost } from './redux/state';
 
 
 
 ReactDOM.render(
-    <App dialogs = {state.dialogsPage.dialogs} 
-         messages={state.dialogsPage.messages} 
-         posts={state.profilePage.posts}
-         sidebarFriends={state.sidebar.friends}/>,
+    <App state = {state}
+         addPost = {addPost}
+         addMessage = {addMessage}/>,
   document.getElementById('root')
 );

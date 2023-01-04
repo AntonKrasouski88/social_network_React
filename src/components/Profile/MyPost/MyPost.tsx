@@ -1,19 +1,24 @@
 import React from 'react';
-import { PostsType } from '../Profile';
+import { PostsType } from '../../../redux/state';
 import styleMyPost from './MyPost.module.css'
 import Post from "./Post/Post";
 
 
 export interface MyPostProps {
     posts: Array<PostsType>,
+    addPost: (post:string)=>void
 }
 
 const MyPost:React.FC<MyPostProps> = 
-    ({posts}) => {
+    ({
+        posts,
+        addPost,}) => {
     
     let newPost = React.createRef<HTMLTextAreaElement>()
-    let addPost = () => {
-        console.log(newPost.current?.value)
+    let onClickAddPostHandler = () => {
+        if(newPost.current?.value) {
+            addPost(newPost.current.value);
+        }      
     }    
 
     return (
@@ -24,7 +29,7 @@ const MyPost:React.FC<MyPostProps> =
                     <textarea ref={newPost}  placeholder={'New Post'} className={styleMyPost.textarea}></textarea>
                 </div>
                 <div className={styleMyPost.addButtonPost}>
-                    <button onClick={addPost}>Add post</button>
+                    <button onClick={onClickAddPostHandler}>Add post</button>
                 </div>
                 {posts.map(p=> <Post message={p.message} countLikes={p.countLikes}/>)}
             </div>

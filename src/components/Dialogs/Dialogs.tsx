@@ -2,28 +2,23 @@ import React from 'react';
 import styleDialogs from './Dialogs.module.css'
 import DialogsItem from './DialogItem/DialogsItem';
 import Message from './Message/Message';
-
-export type DialogType = {
-    id: number,
-    name: string,
-}
-
-export type MessageType = {
-    id: number,
-    message: string,
-}
+import { DialogsType, MessagesType } from '../../redux/state';
 
 
 type DialogsPropsType = {
-    dialogs: Array<DialogType>,
-    messages: Array<MessageType>
+    dialogs: Array<DialogsType>,
+    messages: Array<MessagesType>,
+    addMessage: (message:string)=>void,
 }
 
 
 const Dialogs = (props: DialogsPropsType) => {
     const newMessage = React.createRef<HTMLTextAreaElement>();
     const addMessageHandler = () => {
-        console.log(newMessage.current?.value)
+        if(newMessage.current?.value) {
+            props.addMessage(newMessage.current.value)
+        }
+        
     }
 
     return (

@@ -1,4 +1,39 @@
-export const state = {
+export type DialogsType = {
+  id: number,
+  name: string,
+}
+export type MessagesType = {
+  id: number,
+  message: string,
+}
+
+export type PostsType = {
+  id: number,
+  message: string,
+  countLikes: number,
+}
+export type FriendsType = {
+  id: number,
+  name: string,
+}
+export type DialogsPageType = {
+  dialogs: DialogsType[],
+  messages: MessagesType[],
+}
+export type ProfilePageType = {
+  posts: PostsType[],
+}
+export type SidebarType = {
+  friends: FriendsType[]
+}
+export type RootStateType = {
+  dialogsPage: DialogsPageType,
+  profilePage: ProfilePageType,
+  sidebar: SidebarType,
+}
+
+
+export const state: RootStateType = {
       dialogsPage: {
         dialogs: [
             {id: 1, name: 'Kristina'},
@@ -29,5 +64,15 @@ export const state = {
           {id: 2, name: 'Andrey'},
           {id: 3, name: 'Sveta'},
          ] 
-      }
+      },
   }
+
+export const addPost = (post: string) => {
+  let newPost = {id: 5, message: post, countLikes: 0};
+  state.profilePage.posts.push(newPost);
+}
+
+export const addMessage = (message: string) => {
+  let newMessage = {id: 6, message: message};
+  state.dialogsPage.messages.push(newMessage);
+}
