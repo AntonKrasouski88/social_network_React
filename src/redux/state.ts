@@ -1,3 +1,5 @@
+import { renderTree } from "../renderTree"
+
 export type DialogsType = {
   id: number,
   name: string,
@@ -70,9 +72,11 @@ export const state: RootStateType = {
 export const addPost = (post: string) => {
   let newPost:PostsType = {id: new Date().getTime(), message: post, countLikes: 0};
   state.profilePage.posts.push(newPost);
+  renderTree(state)
 }
 
 export const addMessage = (message: string) => {
   let newMessage:MessagesType = {id: new Date().getTime(), message: message};
   state.dialogsPage.messages.push(newMessage);
+  renderTree(state)
 }
