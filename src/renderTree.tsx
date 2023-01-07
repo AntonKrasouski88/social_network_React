@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { addPost, addMessage, updateNewPost, RootStateType,} from './redux/state';
+import { addPost, addMessage, updateNewPost, updateNewMessage, RootStateType,} from './redux/state';
 
 
 export const renderTree = (state: RootStateType) => {
@@ -11,7 +11,9 @@ export const renderTree = (state: RootStateType) => {
             state = {state}
             addPost = {addPost}
             addMessage ={addMessage}
-            updateNewPost = {updateNewPost}/>,
+            updateNewPost = {updateNewPost}
+            updateNewMessage ={updateNewMessage}
+        />,
       document.getElementById('root')
     );
 }

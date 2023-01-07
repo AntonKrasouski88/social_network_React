@@ -8,7 +8,7 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
-import {RootStateType, updateNewPost} from './redux/state';
+import {RootStateType} from './redux/state';
 
 
 export type AppPropsType = {
@@ -16,6 +16,7 @@ export type AppPropsType = {
     addPost: (post: string) => void,
     addMessage: (message: string) => void,
     updateNewPost: (text: string) => void,
+    updateNewMessage: (text: string) => void,
 }
 
 
@@ -41,7 +42,9 @@ function App(props: AppPropsType) {
                         render={() => <Dialogs
                             dialogs={props.state.dialogsPage.dialogs}
                             messages={props.state.dialogsPage.messages}
-                            addMessage={props.addMessage}/>}/>
+                            newMessage = {props.state.dialogsPage.newMessage}
+                            addMessage={props.addMessage}
+                            updateNewMessage = {props.updateNewMessage}/>}/>
                     <Route path={'/News'} component={News}/>
                     <Route path={'/Music'} component={Music}/>
                     <Route path={'/Setting'} component={Setting}/>

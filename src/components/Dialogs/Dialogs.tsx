@@ -1,24 +1,25 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import styleDialogs from './Dialogs.module.css'
 import DialogsItem from './DialogItem/DialogsItem';
 import Message from './Message/Message';
-import {DialogsType, MessagesType} from '../../redux/state';
+import {DialogsType, MessagesType, updateNewMessage} from '../../redux/state';
 
 
 type DialogsPropsType = {
     dialogs: Array<DialogsType>,
     messages: Array<MessagesType>,
+    newMessage: string,
     addMessage: (message: string) => void,
+    updateNewMessage: (newTextMessage: string) => void,
 }
 
 
 export const Dialogs = (props: DialogsPropsType) => {
-    const newMessage = React.createRef<HTMLTextAreaElement>();
     const addMessageHandler = () => {
-        if (newMessage.current?.value) {
-            props.addMessage(newMessage.current.value)
-        }
-
+        props.addMessage(props.newMessage);
+    }
+    const onChangeNewTextMessage = (e: ChangeEvent <HTMLTextAreaElement>) => {
+        updateNewMessage(e.currentTarget.value);
     }
 
     return (
@@ -31,8 +32,9 @@ export const Dialogs = (props: DialogsPropsType) => {
                                                   message={m.message}/>)}
                 <div>
                     <textarea
+                        value={props.newMessage}
                         placeholder='Type message'
-                        ref={newMessage}
+                        onChange={onChangeNewTextMessage}
                         className={styleDialogs.textArea}></textarea>
                     <button
                         onClick={addMessageHandler}
