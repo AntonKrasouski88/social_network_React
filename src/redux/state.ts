@@ -1,4 +1,6 @@
-import {renderTree} from "../renderTree"
+let renderTree = () => {
+    console.log('hello')
+}
 
 export type DialogsType = {
     id: number,
@@ -78,22 +80,26 @@ export const addPost = (post: string) => {
     const newTextPost: PostsType = {id: new Date().getTime(), message: post, countLikes: 0}
     state.profilePage.posts.push(newTextPost);
     state.profilePage.newPost = ''
-    renderTree(state)
+    renderTree()
 }
 
 export const updateNewPost = (text: string) => {
     state.profilePage.newPost = text;
-    renderTree(state)
+    renderTree()
 }
 
 export const addMessage = (message: string) => {
     let newMessage: MessagesType = {id: new Date().getTime(), message: message};
     state.dialogsPage.messages.push(newMessage);
     state.dialogsPage.newMessage = ''
-    renderTree(state)
+    renderTree()
 }
 
 export const updateNewMessage = (text: string) => {
     state.dialogsPage.newMessage = text;
-    renderTree(state)
+    renderTree()
+}
+
+export const subscriber = (observer:()=>void) => {
+    renderTree = observer
 }
