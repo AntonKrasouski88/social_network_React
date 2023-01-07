@@ -31,8 +31,8 @@ const Navbar = (props: NavbarPropsType) => {
                 </div>
             </nav>
             <div className={styleNavbar.sidebar}>
-                <span className={styleNavbar.spanFrinds}>Friends</span>
-                <div className = {styleNavbar.sidebarFriends}>{props.friends.map(item => <Sidebar id = {item.id} name={item.name}/>) }</div>
+                <span className={styleNavbar.spanFriends}>Friends</span>
+                <div className = {styleNavbar.sidebarFriends}>{props.friends.map(item => <Sidebar key={item.id} id = {item.id} name={item.name}/>) }</div>
             </div>
             
         </div>

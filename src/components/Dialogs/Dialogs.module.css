@@ -37,6 +37,8 @@
     width: 100px;
     height: 20px;
     background-color: beige;
+    border: 1px solid deepskyblue;
+    border-radius: 5px;
 }
 
 .buttonTextArea:hover {

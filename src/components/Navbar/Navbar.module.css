@@ -1,6 +1,8 @@
 .nav {
     grid-row: 2;
     background-color: #ffffff;
+    padding-top: 20px;
+    padding-bottom: 20px;;
 
 }
 .item {
@@ -8,6 +10,10 @@
     margin-left: 40px;
 
 }
+.item:first-child {
+    margin-top: 0px;
+}
+
 .item a {
     color: #97abc0;
     text-decoration: none;
@@ -24,7 +30,7 @@
     color: #E5C59E;
 }
 
-.spanFrinds {
+.spanFriends {
     display: flex;
     margin-top: 30px;
     margin-left: 40px;

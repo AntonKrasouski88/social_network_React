@@ -1,7 +1,7 @@
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
+    grid-template-rows: auto 95vh;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     background-color: #c8ced3;

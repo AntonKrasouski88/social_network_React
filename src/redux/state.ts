@@ -14,6 +14,7 @@ export type PostsType = {
   message: string,
   countLikes: number,
 }
+
 export type FriendsType = {
   id: number,
   name: string,
@@ -24,6 +25,7 @@ export type DialogsPageType = {
 }
 export type ProfilePageType = {
   posts: PostsType[],
+  newPost: string,
 }
 export type SidebarType = {
   friends: FriendsType[]
@@ -58,7 +60,8 @@ export const state: RootStateType = {
           {id: 2, message: 'How are you?', countLikes: 7},
           {id: 3, message: 'Do you look a new movie?', countLikes: 15},
           {id: 4, message: 'Yes, I do', countLikes: 21},
-        ]
+        ],
+          newPost:'',
       },
       sidebar: {
          friends: [
@@ -70,9 +73,15 @@ export const state: RootStateType = {
   }
 
 export const addPost = (post: string) => {
-  let newPost:PostsType = {id: new Date().getTime(), message: post, countLikes: 0};
-  state.profilePage.posts.push(newPost);
-  renderTree(state)
+    const newTextPost = {id: new Date().getTime(), message: post, countLikes: 0}
+    state.profilePage.posts.push(newTextPost);
+    state.profilePage.newPost = ''
+    renderTree(state)
+}
+
+export const updateNewPost = (text: string) => {
+    state.profilePage.newPost = text;
+    renderTree(state)
 }
 
 export const addMessage = (message: string) => {
