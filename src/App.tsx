@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css'
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
@@ -22,7 +22,7 @@ export type AppPropsType = {
 
 function App(props: AppPropsType) {
     return (
-        <BrowserRouter>
+        <>
             <div className={'container'}>
                 <Header/>
                 <Navbar friends={props.state.sidebar.friends}/>
@@ -30,10 +30,10 @@ function App(props: AppPropsType) {
                     <Route path={'/Profile'}
                            render={() =>
                                <Profile
-                                   newPost = {props.state.profilePage.newPost}
+                                   newPost={props.state.profilePage.newPost}
                                    posts={props.state.profilePage.posts}
                                    addPost={props.addPost}
-                                   updateNewPost ={props.updateNewPost}
+                                   updateNewPost={props.updateNewPost}
                                />}
 
                     />
@@ -42,15 +42,15 @@ function App(props: AppPropsType) {
                         render={() => <Dialogs
                             dialogs={props.state.dialogsPage.dialogs}
                             messages={props.state.dialogsPage.messages}
-                            newMessage = {props.state.dialogsPage.newMessage}
+                            newMessage={props.state.dialogsPage.newMessage}
                             addMessage={props.addMessage}
-                            updateNewMessage = {props.updateNewMessage}/>}/>
+                            updateNewMessage={props.updateNewMessage}/>}/>
                     <Route path={'/News'} component={News}/>
                     <Route path={'/Music'} component={Music}/>
                     <Route path={'/Setting'} component={Setting}/>
                 </div>
             </div>
-        </BrowserRouter>
+        </>
     );
 }
 
