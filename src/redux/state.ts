@@ -37,14 +37,28 @@ export type RootStateType = {
 
 export type  storeType = {
     _state: RootStateType,
-    getState: ()=>RootStateType
-    addPost: (post: string) => void,
-    updateNewPost: (text: string) => void,
+    getState: ()=>RootStateType,
+    /*addPost: (post: string) => void,
+    updateNewPost: (text: string) => void,*/
     addMessage: (message: string) => void,
     updateNewMessage: (text: string) => void,
     _renderTree: ()=>void,
     subscriber: (observer: () => void) => void,
+    dispatch: (action: ActionsType) => void,
 }
+
+export type ActionsType = AddPostActionType | UpdateNewPostActionType
+
+type AddPostActionType = {
+    type: 'ADD-POST',
+    post: string,
+}
+
+type UpdateNewPostActionType = {
+    type: 'UPDATE-NEW-POST',
+    text: string,
+}
+
 
 export const store: storeType = {
     _state: {
@@ -82,10 +96,16 @@ export const store: storeType = {
             ]
         },
     },
+    _renderTree () {
+        console.log('hello')
+    },
     getState () {
         return this._state
     },
-    addPost(post: string) {
+    subscriber (observer) {
+        this._renderTree = observer
+    },
+    /*addPost(post: string) {
         const newTextPost: PostsType = {id: new Date().getTime(), message: post, countLikes: 0}
         this._state.profilePage.posts.push(newTextPost);
         this._state.profilePage.newPost = ''
@@ -94,7 +114,7 @@ export const store: storeType = {
     updateNewPost(text: string) {
         this._state.profilePage.newPost = text;
         this._renderTree()
-    },
+    },*/
     addMessage(message: string) {
         let newMessage: MessagesType = {id: new Date().getTime(), message: message};
         this._state.dialogsPage.messages.push(newMessage);
@@ -105,10 +125,18 @@ export const store: storeType = {
         this._state.dialogsPage.newMessage = text;
         this._renderTree()
     },
-    _renderTree () {
-        console.log('hello')
-    },
-    subscriber (observer) {
-        this._renderTree = observer
+    dispatch (action) {
+        switch (action.type) {
+            case 'ADD-POST':
+                const newTextPost: PostsType = {id: new Date().getTime(), message: action.post, countLikes: 0}
+                this._state.profilePage.posts.push(newTextPost);
+                this._state.profilePage.newPost = ''
+                this._renderTree()
+                break
+            case 'UPDATE-NEW-POST':
+                this._state.profilePage.newPost = action.text;
+                this._renderTree()
+                break
+        }
     }
 }

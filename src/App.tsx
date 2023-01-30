@@ -8,14 +8,13 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
-import {RootStateType} from './redux/state';
+import {ActionsType, RootStateType} from './redux/state';
 
 
 export type AppPropsType = {
     state: RootStateType,
-    addPost: (post: string) => void,
+    dispatch: (action: ActionsType) => void,
     addMessage: (message: string) => void,
-    updateNewPost: (text: string) => void,
     updateNewMessage: (text: string) => void,
 }
 
@@ -32,8 +31,7 @@ function App(props: AppPropsType) {
                                <Profile
                                    newPost={props.state.profilePage.newPost}
                                    posts={props.state.profilePage.posts}
-                                   addPost={props.addPost}
-                                   updateNewPost={props.updateNewPost}
+                                   dispatch={props.dispatch}
                                />}
 
                     />

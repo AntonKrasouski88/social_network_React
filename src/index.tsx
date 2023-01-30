@@ -11,9 +11,8 @@ export const renderTree = () => {
         <BrowserRouter>
             <App
                 state={store.getState()}
-                addPost={store.addPost.bind(store)}
+                dispatch={store.dispatch.bind(store)}
                 addMessage={store.addMessage.bind(store)}
-                updateNewPost={store.updateNewPost.bind(store)}
                 updateNewMessage={store.updateNewMessage.bind(store)}
             />
         </BrowserRouter>,
