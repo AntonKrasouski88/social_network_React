@@ -3,6 +3,7 @@ import dialogsReducer, {
     AddMessageACType,
     UpdateNewMessageACType,
 } from "./dialogs-reducer";
+import sidebarReducer from "./sidebar-reducer";
 
 export type DialogsType = {
     id: number,
@@ -44,28 +45,10 @@ export type RootStateType = {
 export type  storeType = {
     _state: RootStateType,
     getState: ()=>RootStateType,
-    /*addPost: (post: string) => void,
-    updateNewPost: (text: string) => void,*/
-   /*  addMessage: (message: string) => void,
-    updateNewMessage: (text: string) => void, */
     _renderTree: ()=>void,
     subscriber: (observer: () => void) => void,
     dispatch: (action: ActionsType) => void,
 }
-
-
-/* type AddPostActionType = {
-    type: 'ADD-POST',
-    post: string,
-}
-
-type UpdateNewPostActionType = {
-    type: 'UPDATE-NEW-POST',
-    text: string,
-} */
-
-
-
 
 export const store: storeType = {
     _state: {
@@ -112,51 +95,12 @@ export const store: storeType = {
     subscriber (observer) {
         this._renderTree = observer
     },
-    /*addPost(post: string) {
-        const newTextPost: PostsType = {id: new Date().getTime(), message: post, countLikes: 0}
-        this._state.profilePage.posts.push(newTextPost);
-        this._state.profilePage.newPost = ''
-        this._renderTree()
-    },
-    updateNewPost(text: string) {
-        this._state.profilePage.newPost = text;
-        this._renderTree()
-    },*/
-   /*  addMessage(message: string) {
-        let newMessage: MessagesType = {id: new Date().getTime(), message: message};
-        this._state.dialogsPage.messages.push(newMessage);
-        this._state.dialogsPage.newMessage = ''
-        this._renderTree()
-    },
-    updateNewMessage(text: string) {
-        this._state.dialogsPage.newMessage = text;
-        this._renderTree()
-    }, */
+
     dispatch (action) {
         profileReducer(this._state.profilePage, action);
         dialogsReducer(this._state.dialogsPage, action);
+        sidebarReducer(this._state.sidebar, action)
         this._renderTree()
-       /* switch (action.type) {
-            case 'ADD-POST':
-                const newTextPost: PostsType = {id: new Date().getTime(), message: action.payload.post, countLikes: 0}
-                this._state.profilePage.posts.push(newTextPost);
-                this._state.profilePage.newPost = ''
-                this._renderTree()
-                break
-            case 'UPDATE-NEW-POST':
-                this._state.profilePage.newPost = action.payload.text;
-                this._renderTree()
-                break
-            case 'ADD-MESSAGE':
-                let newMessage: MessagesType = {id: new Date().getTime(), message: action.payload.message};
-                this._state.dialogsPage.messages.push(newMessage);
-                this._state.dialogsPage.newMessage = ''
-                this._renderTree()
-                break
-            case 'UPDATE-NEW-MESSAGE':
-                this._state.dialogsPage.newMessage = action.payload.text;
-                this._renderTree()
-        }   */
     }
 }
 

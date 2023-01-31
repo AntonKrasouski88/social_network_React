@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react';
 import styleDialogs from './Dialogs.module.css'
 import DialogsItem from './DialogItem/DialogsItem';
 import Message from './Message/Message';
-import {ActionsType, DialogsType, MessagesType, } from '../../redux/state';
+import {ActionsType, DialogsType, MessagesType, } from '../../redux/store';
 import {addMessageAC, updateNewMessageAC} from "../../redux/dialogs-reducer";
 
 
