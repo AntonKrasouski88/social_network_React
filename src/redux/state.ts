@@ -1,3 +1,9 @@
+import profileReducer, {AddPostACType, UpdateNewPostACType} from "./profile-Reducer";
+import dialogsReducer, {
+    AddMessageACType,
+    UpdateNewMessageACType,
+} from "./dialogs-reducer";
+
 export type DialogsType = {
     id: number,
     name: string,
@@ -127,7 +133,10 @@ export const store: storeType = {
         this._renderTree()
     }, */
     dispatch (action) {
-        switch (action.type) {
+        profileReducer(this._state.profilePage, action);
+        dialogsReducer(this._state.dialogsPage, action);
+        this._renderTree()
+       /* switch (action.type) {
             case 'ADD-POST':
                 const newTextPost: PostsType = {id: new Date().getTime(), message: action.payload.post, countLikes: 0}
                 this._state.profilePage.posts.push(newTextPost);
@@ -147,49 +156,10 @@ export const store: storeType = {
             case 'UPDATE-NEW-MESSAGE':
                 this._state.dialogsPage.newMessage = action.payload.text;
                 this._renderTree()
-        }   
+        }   */
     }
 }
 
-export type ActionsType = AddPostACType | UpdateNewPostACType | AddMessageACType | updateNewMessageACType
+export type ActionsType = AddPostACType | UpdateNewPostACType | AddMessageACType | UpdateNewMessageACType
 
-type AddPostACType = ReturnType <typeof addPostAC>
-type UpdateNewPostACType = ReturnType <typeof updateNewPostAC>
-type AddMessageACType = ReturnType <typeof addMessageAC>
-type updateNewMessageACType = ReturnType <typeof updateNewMessageAC>
 
-export const addPostAC = (post: string) => {
-    return {
-        type: 'ADD-POST',
-        payload: {
-            post
-        }
-    } as const
-} 
-
-export const updateNewPostAC = (text: string) => {
-    return {
-        type: 'UPDATE-NEW-POST',
-        payload: {
-            text
-        }
-    } as const
-}
-
-export const addMessageAC = (message: string) => {
-    return {
-        type: 'ADD-MESSAGE',
-        payload: {
-            message,
-        }
-    } as const
-}
-
-export const updateNewMessageAC = (text: string) => {
-    return {
-        type: 'UPDATE-NEW-MESSAGE',
-        payload: {
-            text
-        } 
-    } as const
-}
