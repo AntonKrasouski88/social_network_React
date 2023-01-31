@@ -14,8 +14,6 @@ import {ActionsType, RootStateType} from './redux/state';
 export type AppPropsType = {
     state: RootStateType,
     dispatch: (action: ActionsType) => void,
-    addMessage: (message: string) => void,
-    updateNewMessage: (text: string) => void,
 }
 
 
@@ -41,8 +39,8 @@ function App(props: AppPropsType) {
                             dialogs={props.state.dialogsPage.dialogs}
                             messages={props.state.dialogsPage.messages}
                             newMessage={props.state.dialogsPage.newMessage}
-                            addMessage={props.addMessage}
-                            updateNewMessage={props.updateNewMessage}/>}/>
+                            dispatch={props.dispatch}/>}
+                            />
                     <Route path={'/News'} component={News}/>
                     <Route path={'/Music'} component={Music}/>
                     <Route path={'/Setting'} component={Setting}/>

@@ -40,16 +40,15 @@ export type  storeType = {
     getState: ()=>RootStateType,
     /*addPost: (post: string) => void,
     updateNewPost: (text: string) => void,*/
-    addMessage: (message: string) => void,
-    updateNewMessage: (text: string) => void,
+   /*  addMessage: (message: string) => void,
+    updateNewMessage: (text: string) => void, */
     _renderTree: ()=>void,
     subscriber: (observer: () => void) => void,
     dispatch: (action: ActionsType) => void,
 }
 
-export type ActionsType = AddPostActionType | UpdateNewPostActionType
 
-type AddPostActionType = {
+/* type AddPostActionType = {
     type: 'ADD-POST',
     post: string,
 }
@@ -57,7 +56,9 @@ type AddPostActionType = {
 type UpdateNewPostActionType = {
     type: 'UPDATE-NEW-POST',
     text: string,
-}
+} */
+
+
 
 
 export const store: storeType = {
@@ -115,7 +116,7 @@ export const store: storeType = {
         this._state.profilePage.newPost = text;
         this._renderTree()
     },*/
-    addMessage(message: string) {
+   /*  addMessage(message: string) {
         let newMessage: MessagesType = {id: new Date().getTime(), message: message};
         this._state.dialogsPage.messages.push(newMessage);
         this._state.dialogsPage.newMessage = ''
@@ -124,19 +125,71 @@ export const store: storeType = {
     updateNewMessage(text: string) {
         this._state.dialogsPage.newMessage = text;
         this._renderTree()
-    },
+    }, */
     dispatch (action) {
         switch (action.type) {
             case 'ADD-POST':
-                const newTextPost: PostsType = {id: new Date().getTime(), message: action.post, countLikes: 0}
+                const newTextPost: PostsType = {id: new Date().getTime(), message: action.payload.post, countLikes: 0}
                 this._state.profilePage.posts.push(newTextPost);
                 this._state.profilePage.newPost = ''
                 this._renderTree()
                 break
             case 'UPDATE-NEW-POST':
-                this._state.profilePage.newPost = action.text;
+                this._state.profilePage.newPost = action.payload.text;
                 this._renderTree()
                 break
-        }
+            case 'ADD-MESSAGE':
+                let newMessage: MessagesType = {id: new Date().getTime(), message: action.payload.message};
+                this._state.dialogsPage.messages.push(newMessage);
+                this._state.dialogsPage.newMessage = ''
+                this._renderTree()
+                break
+            case 'UPDATE-NEW-MESSAGE':
+                this._state.dialogsPage.newMessage = action.payload.text;
+                this._renderTree()
+        }   
     }
+}
+
+export type ActionsType = AddPostACType | UpdateNewPostACType | AddMessageACType | updateNewMessageACType
+
+type AddPostACType = ReturnType <typeof addPostAC>
+type UpdateNewPostACType = ReturnType <typeof updateNewPostAC>
+type AddMessageACType = ReturnType <typeof addMessageAC>
+type updateNewMessageACType = ReturnType <typeof updateNewMessageAC>
+
+export const addPostAC = (post: string) => {
+    return {
+        type: 'ADD-POST',
+        payload: {
+            post
+        }
+    } as const
+} 
+
+export const updateNewPostAC = (text: string) => {
+    return {
+        type: 'UPDATE-NEW-POST',
+        payload: {
+            text
+        }
+    } as const
+}
+
+export const addMessageAC = (message: string) => {
+    return {
+        type: 'ADD-MESSAGE',
+        payload: {
+            message,
+        }
+    } as const
+}
+
+export const updateNewMessageAC = (text: string) => {
+    return {
+        type: 'UPDATE-NEW-MESSAGE',
+        payload: {
+            text
+        } 
+    } as const
 }
