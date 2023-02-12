@@ -1,4 +1,4 @@
-import profileReducer, {AddPostACType, UpdateNewPostACType} from "./profile-Reducer";
+import profileReducer, {AddPostACType, UpdateNewPostACType} from "./profile-reducer";
 import dialogsReducer, {
     AddMessageACType,
     UpdateNewMessageACType,

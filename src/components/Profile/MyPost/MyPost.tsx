@@ -1,26 +1,24 @@
 import React, {ChangeEvent} from 'react';
-import {ActionsType, PostsType,} from '../../../redux/store';
+import {PostsType,} from '../../../redux/store';
 import styleMyPost from './MyPost.module.css'
 import Post from "./Post/Post";
-import {addPostAC, updateNewPostAC} from "../../../redux/profile-Reducer";
 
 
 export type MyPostProps =  {
     posts: Array<PostsType>,
-    dispatch: (action: ActionsType) => void,
     newPost: string,
+    addPost: ()=>void,
+    changeNewPost: (text: string)=>void,
 }
 
 const MyPost = (props: MyPostProps) => {
 
         let onClickAddPostHandler = () => {
-            if(props.newPost.trim() !== '') {
-                props.dispatch(addPostAC(props.newPost));
-            }
+            props.addPost()
         }
 
         const onChangeNewPostHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-            props.dispatch(updateNewPostAC(e.currentTarget.value));
+            props.changeNewPost(e.currentTarget.value);
         }
 
         return (

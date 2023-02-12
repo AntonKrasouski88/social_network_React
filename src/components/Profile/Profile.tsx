@@ -1,12 +1,11 @@
 import React from 'react';
 import styleProfile from './Profile.module.css';
-import MyPost  from "./MyPost/MyPost";
 import PersonalData from "./PersonalData/PersonalData";
-import {ActionsType, PostsType} from '../../redux/store';
+import {ActionsType, ProfilePageType} from '../../redux/store';
+import MyPostContainer from './MyPost/MyPostContainer';
 
 export type ProfilePropsType = {
-    newPost: string,
-    posts: Array<PostsType>,
+    state: ProfilePageType
     dispatch: (action: ActionsType) => void,
 }
 
@@ -17,10 +16,7 @@ const Profile = (props: ProfilePropsType) => {
         <div className={styleProfile.content}>
             <div className={styleProfile.teamFon}></div>
             <PersonalData/>
-            <MyPost
-                newPost={props.newPost}
-                posts={props.posts}
-                dispatch={props.dispatch}/>
+            <MyPostContainer state={props.state} dispatch={props.dispatch}/>
         </div>
     );
 };
