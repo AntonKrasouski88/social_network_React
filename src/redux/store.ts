@@ -42,15 +42,15 @@ export type RootStateType = {
     sidebar: SidebarType,
 }
 
-export type  storeType = {
+export type  StoreType = {
     _state: RootStateType,
     getState: ()=>RootStateType,
     _renderTree: ()=>void,
-    subscriber: (observer: () => void) => void,
+    subscribe: (observer: () => void) => void,
     dispatch: (action: ActionsType) => void,
 }
 
-export const store: storeType = {
+export const store: StoreType = {
     _state: {
         dialogsPage: {
             dialogs: [
@@ -92,7 +92,7 @@ export const store: storeType = {
     getState () {
         return this._state
     },
-    subscriber (observer) {
+    subscribe (observer) {
         this._renderTree = observer
     },
 
