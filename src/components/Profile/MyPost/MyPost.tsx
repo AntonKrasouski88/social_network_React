@@ -1,18 +1,18 @@
 import React, {ChangeEvent} from 'react';
-import {PostsType,} from '../../../redux/store';
+//import { PostsType } from '../../../redux/profile-reducer';
 import styleMyPost from './MyPost.module.css'
+import { MyPostContainerType } from './MyPostContainer';
 import Post from "./Post/Post";
 
 
-export type MyPostProps =  {
+/* export type MyPostProps =  {
     posts: Array<PostsType>,
     newPost: string,
     addPost: ()=>void,
     changeNewPost: (text: string)=>void,
-}
+} */
 
-const MyPost = (props: MyPostProps) => {
-
+const MyPost = (props: MyPostContainerType) => {
         let onClickAddPostHandler = () => {
             props.addPost()
         }

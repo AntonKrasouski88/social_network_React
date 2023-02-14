@@ -2,16 +2,17 @@ import { combineReducers, createStore} from "redux";
 import dialogsReducer from "./dialogs-reducer";
 import profileReducer from "./profile-reducer";
 import SidebarReducer from "./sidebar-reducer";
-import { StoreType } from "./store";
 
+// объединяя reducer-ы с помощью combineReducers,
+// мы задаём структуру нашего единственного объекта-состояния
 let rootReducer = combineReducers({
     dialogsPage: dialogsReducer,
     profilePage: profileReducer,
     sidebar: SidebarReducer
 })
-
+// определить автоматически тип всего объекта состояния
 export type AppStateType = ReturnType<typeof rootReducer>
-
-let store: StoreType = createStore(rootReducer)
-
-export default store
+// непосредственно создаём store
+export let store = createStore(rootReducer)
+// @ts-ignore
+window.store = store;

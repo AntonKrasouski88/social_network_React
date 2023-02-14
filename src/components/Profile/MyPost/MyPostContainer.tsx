@@ -1,15 +1,54 @@
-import React from 'react';
-import { addPostAC, updateNewPostAC } from '../../../redux/profile-reducer';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { addPostAC, PostsType, updateNewPostAC } from '../../../redux/profile-reducer';
+import { AppStateType } from '../../../redux/redux-store';
 //import { ActionsType, ProfilePageType} from '../../../redux/store';
-import { StoreContext } from '../../../StoreContext';
 import MyPost from './MyPost';
+
+export type mapToStatetoPropsType = {
+    posts: PostsType[],
+    newPost: string,
+}
+
+export type mapToDispatchProps = {
+    changeNewPost: (text: string) => void,
+    addPost: () => void,
+}
+
+export type MyPostContainerType = mapToStatetoPropsType & mapToDispatchProps;
+
+const mapToStatetoProps = (state: AppStateType) => {
+    return (
+        {
+            posts: state.profilePage.posts,
+            newPost: state.profilePage.newPost,
+        }
+    )
+}
+
+const mapToDispatchToProps = (dispatch: Dispatch) => {
+    return (
+        {
+            changeNewPost: (text: string) => {
+                dispatch(updateNewPostAC(text));
+            },
+            addPost: () => {
+                    dispatch(addPostAC());
+            }
+        }
+    )
+}
+
+
+
+export const MyPostContainer = connect(mapToStatetoProps, mapToDispatchToProps)(MyPost)
 
 /* type MyPostContainerType = {
     state: ProfilePageType,
     dispatch: (action: ActionsType) => void,
 } */
 
-export const MyPostContainer = () => {
+/* export const MyPostContainer = () => {
     
     return (
         <StoreContext.Consumer>
@@ -35,4 +74,4 @@ export const MyPostContainer = () => {
     );
 };
 
-export default MyPostContainer;
+export default MyPostContainer; */

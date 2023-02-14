@@ -10,6 +10,7 @@ import Setting from "./components/Setting/Setting";
 import { DialogsContainer } from './components/Dialogs/DialogsContainer';
 
 
+
 function App() {
     return (
         <>
@@ -26,8 +27,7 @@ function App() {
                     <Route
                         path={'/Dialogs'}
                         render={() =>
-                            <DialogsContainer
-                            />
+                            <DialogsContainer />
                         }
                     />
                     <Route path={'/News'} component={News} />

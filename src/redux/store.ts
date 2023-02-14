@@ -5,35 +5,35 @@ import dialogsReducer, {
 } from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 
-export type DialogsType = {
+type DialogsType = {
     id: number,
     name: string,
 }
-export type MessagesType = {
+type MessagesType = {
     id: number,
     message: string,
 }
 
-export type PostsType = {
+type PostsType = {
     id: number,
     message: string,
     countLikes: number,
 }
 
-export type FriendsType = {
+type FriendsType = {
     id: number,
     name: string,
 }
-export type DialogsPageType = {
+type DialogsPageType = {
     dialogs: DialogsType[],
     messages: MessagesType[],
     newMessage: string,
 }
-export type ProfilePageType = {
+type ProfilePageType = {
     posts: PostsType[],
     newPost: string,
 }
-export type SidebarType = {
+type SidebarType = {
     friends: FriendsType[]
 }
 export type RootStateType = {

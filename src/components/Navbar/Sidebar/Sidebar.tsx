@@ -1,13 +1,13 @@
 import React from 'react';
 import person from '../../../img/logo/person.png'
-import { FriendsType } from '../../../redux/store';
 import s from './Sidebar.module.css'
+import { SidebarPropsType } from './SidebarContainer';
 
-type SidebarFrindsProps = {
+/* type SidebarFrindsProps = {
   friends: FriendsType[]
-}
+} */
 
-export const Sidebar = (props: SidebarFrindsProps) => {
+export const Sidebar = (props: SidebarPropsType) => {
   const lookFriends = props.friends.map(el=> {
     return (
       <div key = {el.id}>

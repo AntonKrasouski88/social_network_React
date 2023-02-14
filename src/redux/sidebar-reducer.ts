@@ -1,26 +1,21 @@
-import { SidebarType} from "./store";
-
-
-/*
-export type SidebarReducerACType = ReturnType <typeof sidebarReducerAC>
-
-export const sidebarReducerAC = () => {
-    return {
-        type: 'STATE',
-    } as const
+export type FriendsType = {
+    id: number,
+    name: string,
 }
-*/
 
+export type SidebarType = {
+    friends: FriendsType[]
+}
 
 const initialState: SidebarType = {
     friends: [
         {id: 1, name: 'Ilona'},
         {id: 2, name: 'Andrey'},
         {id: 3, name: 'Sveta'},
-    ]
+    ] as FriendsType[],
 }
 
-const sidebarReducer = (state: SidebarType = initialState, action: any) => {
+const sidebarReducer = (state: SidebarType = initialState, action: any): SidebarType => {
         return state
 }
 
