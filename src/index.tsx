@@ -4,11 +4,10 @@ import './index.css';
 import App from './App';
 import store from './redux/redux-store';
 import { BrowserRouter } from "react-router-dom";
-import { Provider} from './StoreContext';
-import { RootStateType} from './redux/store';
+import { Provider } from './StoreContext';
+//import { Provider } from 'react-redux';
 
-
-export const renderTree = (state: RootStateType) => {
+export const renderTree = () => {
     ReactDOM.render(
         <BrowserRouter>
             <Provider store={store}>
@@ -18,8 +17,5 @@ export const renderTree = (state: RootStateType) => {
         document.getElementById('root')
     );
 }
-renderTree(store.getState());
-store.subscribe(()=>{
-    let state = store.getState()
-    renderTree(state)
-});
+renderTree();
+store.subscribe(renderTree);

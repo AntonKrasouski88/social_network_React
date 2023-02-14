@@ -35,7 +35,7 @@ const MyPost = (props: MyPostProps) => {
                     <div className={styleMyPost.addButtonPost}>
                         <button onClick={onClickAddPostHandler}>Add post</button>
                     </div>
-                    {props.posts.map(p => <Post message={p.message} countLikes={p.countLikes}/>)}
+                    {props.posts.map(p => <Post key={p.id} message={p.message} countLikes={p.countLikes}/>)}
                 </div>
             </div>
         );

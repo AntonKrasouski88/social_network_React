@@ -6,7 +6,7 @@ export const SidebarContainer = () => {
     return (
     <StoreContext.Consumer>
         {(store)=>{
-            return (store.getState().sidebar.friends.map(el=><Sidebar key ={el.id} id ={el.id} name={el.name}/>))
+            return (<Sidebar friends ={store.getState().sidebar.friends}/>)
         }}
         </StoreContext.Consumer>
     )}
