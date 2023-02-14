@@ -43,19 +43,15 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsTy
     switch (action.type) {
         case 'ADD-POST':
             if(state.newPost.trim() !== '') {
-                const newTextPost: PostsType = {id: new Date().getTime(), message: state.newPost, countLikes: 0}
-                let stateCopy = {...state}
-                stateCopy.posts.push(newTextPost);
-                stateCopy.newPost = '';
-                return stateCopy;
+                return {...state, 
+                    posts: [...state.posts, {id: new Date().getTime(), message: state.newPost, countLikes: 0}],
+                    newPost: ''};
             } else {
                 return state
             }
             
         case 'UPDATE-NEW-POST':
-            let stateCopy = {...state}
-            stateCopy.newPost = action.payload.textPost;
-            return stateCopy
+            return {...state, newPost: action.payload.textPost}
         default:
             return state
     }

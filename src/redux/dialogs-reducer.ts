@@ -58,7 +58,7 @@ const dialogsReducer = (state: DialogsPageType = initialState , action: ActionsT
         case 'ADD-MESSAGE':
             if(state.newMessage.trim()!=='') {
                 let newMessage: MessageType = {id: new Date().getTime(), message: state.newMessage};
-                let stateCopy = {...state}
+                let stateCopy = {...state, messages: [...state.messages]}
                 stateCopy.messages.push(newMessage);
                 stateCopy.newMessage = '';
                 return stateCopy
