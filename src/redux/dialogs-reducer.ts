@@ -1,4 +1,5 @@
-import {ActionsType} from "./store";
+import { ActionsType } from "./redux-store"
+
 
 export type AddMessageACType = ReturnType <typeof addMessageAC>
 export type UpdateNewMessageACType = ReturnType <typeof updateNewMessageAC>

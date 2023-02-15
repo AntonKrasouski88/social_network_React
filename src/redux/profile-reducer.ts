@@ -1,4 +1,5 @@
-import { ActionsType } from "./store";
+import { ActionsType } from "./redux-store"
+
 
 export type AddPostACType = ReturnType <typeof addPostAC>
 export type UpdateNewPostACType = ReturnType <typeof updateNewPostAC>

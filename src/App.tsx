@@ -8,6 +8,7 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Setting from "./components/Setting/Setting";
 import { DialogsContainer } from './components/Dialogs/DialogsContainer';
+import { UsersContainer } from './components/users/UsersContainer';
 
 
 
@@ -29,6 +30,12 @@ function App() {
                         render={() =>
                             <DialogsContainer />
                         }
+                    />
+                    <Route
+                    path ={'/Users'}
+                    render = {()=>
+                        <UsersContainer/>
+                    }
                     />
                     <Route path={'/News'} component={News} />
                     <Route path={'/Music'} component={Music} />

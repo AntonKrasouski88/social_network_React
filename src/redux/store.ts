@@ -1,9 +1,8 @@
-import profileReducer, {AddPostACType, UpdateNewPostACType} from "./profile-reducer";
+import profileReducer from "./profile-reducer";
 import dialogsReducer, {
-    AddMessageACType,
-    UpdateNewMessageACType,
 } from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
+import { ActionsType } from "./redux-store";
 
 type DialogsType = {
     id: number,
@@ -103,7 +102,5 @@ export const store: StoreType = {
         this._renderTree()
     }
 }
-
-export type ActionsType = AddPostACType | UpdateNewPostACType | AddMessageACType | UpdateNewMessageACType
 
 
